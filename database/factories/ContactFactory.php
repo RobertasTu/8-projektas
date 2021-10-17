@@ -12,7 +12,8 @@ $factory->define(Contact::class, function (Faker $faker) {
         'address'=>$faker->streetAddress(),
         'email'=>Str::random(10),
         'country'=>$faker->country(),
-        'city'=>$faker->city()
+        'city'=>$faker->city(),
+        // 'company_id'=>factory(Company::class)->create()->id
 
 
 

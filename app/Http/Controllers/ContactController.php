@@ -1,10 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Company;
+
 
 use App\Contact;
 use Illuminate\Http\Request;
+use App\Company;
 
 class ContactController extends Controller
 {
@@ -27,7 +28,8 @@ class ContactController extends Controller
     public function create()
     {
         $contacts = Contact::all();
-        return view('contact.create', ['contacts' => $contacts]);
+        $companies = Company::all();
+        return view('contact.create', ['companies' => $companies]);
     }
 
     /**
@@ -45,6 +47,7 @@ class ContactController extends Controller
         $contact->email = $request->contact_email;
         $contact->country = $request->contact_country;
         $contact->city = $request->contact_city;
+        $contact->company_id = $request->contact_company_id;
 
         $contact->save();
 
