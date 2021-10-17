@@ -73,7 +73,8 @@ class ContactController extends Controller
      */
     public function edit(Contact $contact)
     {
-        return view('contact.edit', ['contact'=>$contact]);
+        $companies = Company::all();
+        return view('contact.edit', ['contact'=>$contact], ['companies'=>$companies]);
     }
 
     /**

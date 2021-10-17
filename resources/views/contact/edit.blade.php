@@ -68,7 +68,19 @@
                                 </div>
                             </div>
 
+                            <div class="form-group row">
 
+                                <label for="contact_company_id" class="col-md-4 col-form-label text-md-right">{{ __('Company:') }}</label>
+                                <div class="col-md-6">
+                                    <select class="form-control" name="contact_company_id">
+
+
+                                        @foreach ($companies as $company)
+                                            <option value="{{$company->id}}">{{$company->title}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
 
 
 
