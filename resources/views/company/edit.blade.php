@@ -34,6 +34,19 @@
                                 </div>
                             </div>
                             <div class="form-group row">
+
+                                <label for="company_contact_id" class="col-md-4 col-form-label text-md-right">{{ __('Contact:') }}</label>
+                                <div class="col-md-6">
+                                    <select class="form-control" name="company_contactid">
+
+
+                                        @foreach ($contacts as $contact)
+                                        <option value="{{$contact->id}}" @if($contact->id == $company->contact_id) selected @endif>{{$contact->title}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
                                 <label for="company_logo" class="col-md-4 col-form-label text-md-right">{{ __('Company logo:') }}</label>
                                 <div class="col-md-6">
                             <input type="file" name="company_logo" class="form-control">
@@ -41,6 +54,8 @@
                             <p> {{$company->logo}} </p>
                         </div>
                             </div>
+
+
 
                             <div class="form-group row mb-0">
                                 <div class="col-md-6 offset-md-4">

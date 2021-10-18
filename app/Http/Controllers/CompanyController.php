@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Contact;
 use App\Company;
 use Illuminate\Http\Request;
 
@@ -26,13 +27,14 @@ class CompanyController extends Controller
      */
     public function create()
     {
-        $companies = Company::all();
-        return view("company.create", ["companies" => $companies]);
+        $contacts = Contact::all();
+        // $companies = Company::all();
+        return view("company.create", ["contacts" => $contacts]);
 
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created resource in storage. =
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -42,6 +44,7 @@ class CompanyController extends Controller
         $company = new Company();
          $company->title = $request->company_title;
         $company->description = $request->company_description;
+        $company->contact_id = $request->company_contactid;
 
         if($request->has('company_logo')) {
 
@@ -77,7 +80,8 @@ class CompanyController extends Controller
      */
     public function edit(Company $company)
     {
-        return view('company.edit', ['company'=>$company]);
+        $contacts = Contact::all();
+        return view('company.edit', ['company'=>$company, 'contacts'=>$contacts]);
     }
 
     /**
@@ -92,6 +96,7 @@ class CompanyController extends Controller
 
         $company->title = $request->company_title;
         $company->description = $request->company_description;
+        $company->contact_id = $request->company_contactid;
 
         if($request->has('company_logo')) {
         $imageName = time().'.'.$request->company_logo->extension();
